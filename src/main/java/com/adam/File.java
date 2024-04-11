@@ -5,10 +5,9 @@ public enum File {
 
     public static File fromChar(char c) {
         try {
-            File.valueOf(String.valueOf(c).toUpperCase());
+            return File.valueOf(String.valueOf(c).toUpperCase());
         } catch (IllegalArgumentException e) {
-            throw new RuntimeException(e);
+            return null;
         }
-        return null;
     }
 }
