@@ -16,6 +16,9 @@ public class Game {
         while (true) {
             renderer.render(board);
             // input
+            Coordinates coordinates = InputCoordinates.inputPieceCoordinatesForColor(
+                    isWhiteToMove ? Color.WHITE : Color.BLACK, board
+            );
 
             // make move
 

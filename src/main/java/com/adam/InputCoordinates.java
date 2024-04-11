@@ -74,6 +74,20 @@ public class InputCoordinates {
         }
     }
 
+    public static Coordinates inputAvailableSquare(Set<Coordinates> coordinates) {
+        while (true) {
+            System.out.println("Введите ход для выбранной фигуры");
+            Coordinates input = input();
+
+            if (!coordinates.contains(input)) {
+                System.out.println("Недоступное для хода клетка!");
+                continue;
+            }
+
+            return input;
+        }
+    }
+
     public static void main(String[] args) {
         Board board = new Board();
         board.setupDefaultPiecesPositions();
