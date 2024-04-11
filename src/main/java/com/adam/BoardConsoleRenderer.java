@@ -18,7 +18,7 @@ public class BoardConsoleRenderer {
             for (File file : File.values()) {
                 Coordinates coordinates = new Coordinates(file, rank);
                 if (board.isSquareEmpty(coordinates)) {
-                    line.append(getSpringForEmptySquare(coordinates));
+                    line.append(getSpriteForEmptySquare(coordinates));
                 } else {
                     line.append(getPieceSprite(board.getPiece(coordinates)));
                 }
@@ -47,7 +47,7 @@ public class BoardConsoleRenderer {
         return result;
     }
 
-    private String getSpringForEmptySquare(Coordinates coordinates) {
+    private String getSpriteForEmptySquare(Coordinates coordinates) {
         return colorizeSprite("   ", Color.WHITE, Board.isSquareDark(coordinates));
     }
 

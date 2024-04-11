@@ -1,9 +1,13 @@
 package main.java.com.adam;
 
+import main.java.com.adam.piece.Piece;
+
+import java.util.Set;
+
 public class Game {
 
     private final Board board;
-    private BoardConsoleRenderer renderer = new BoardConsoleRenderer();
+    private final BoardConsoleRenderer renderer = new BoardConsoleRenderer();
 
 
     public Game(Board board) {
@@ -15,14 +19,24 @@ public class Game {
 
         while (true) {
             renderer.render(board);
-            // input
-            Coordinates coordinates = InputCoordinates.inputPieceCoordinatesForColor(
+
+            if (isWhiteToMove) {
+                System.out.println("Ходят белые! ");
+            } else {
+                System.out.println("Ходят черные!");
+            }
+
+            Coordinates sourceCoordinates = InputCoordinates.inputPieceCoordinatesForColor(
                     isWhiteToMove ? Color.WHITE : Color.BLACK, board
             );
 
-            // make move
+            Piece piece = board.getPiece(sourceCoordinates);
+            Set<Coordinates> availableMoveSquare = piece.getAvailableMoveSquare(board);
 
-            // pass move
+            Coordinates targetCoordinates = InputCoordinates.inputAvailableSquare(availableMoveSquare);
+
+            board.movePiece(sourceCoordinates, targetCoordinates);
+
             isWhiteToMove = !isWhiteToMove;
         }
     }
