@@ -22,9 +22,7 @@ public class Coordinates {
         int r = rank + shift.rankShift;
 
         if ((f < 0) || (f > 7)) return false;
-        if ((r < 1) || (r > 8)) return false;
-
-        return true;
+        return (r >= 1) && (r <= 8);
     }
 
     @Override
