@@ -1,5 +1,6 @@
 package main.java.com.adam.piece;
 
+import main.java.com.adam.Board;
 import main.java.com.adam.Color;
 import main.java.com.adam.Coordinates;
 
@@ -30,5 +31,17 @@ public class Bishop extends Piece {
         }
 
         return result;
+    }
+
+    @Override
+    protected boolean isSquareAvailableForMove(Coordinates coordinates, Board board) {
+        boolean result = super.isSquareAvailableForMove(coordinates, board);
+
+        if(result) {
+            // 1. получает координаты промежуточных клеток
+            // 2. проверяем что клетка свободна
+
+        }
+        return false;
     }
 }
