@@ -1,10 +1,12 @@
 package main.java.com.adam.piece;
 
 import main.java.com.adam.Board;
+import main.java.com.adam.BoardUtils;
 import main.java.com.adam.Color;
 import main.java.com.adam.Coordinates;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Bishop extends Piece {
@@ -37,11 +39,18 @@ public class Bishop extends Piece {
     protected boolean isSquareAvailableForMove(Coordinates coordinates, Board board) {
         boolean result = super.isSquareAvailableForMove(coordinates, board);
 
-        if(result) {
+        if (result) {
             // 1. получает координаты промежуточных клеток
-            // 2. проверяем что клетка свободна
+            List<Coordinates> coordinatesBetween = BoardUtils.getDiagonalCoordinatesBetween(this.coordinates, coordinates);
 
+            for (Coordinates c : coordinatesBetween) {
+                if (!board.isSquareEmpty(c)) {
+                    return false;
+                }
+            }
+            return true;
+        } else {
+            return false;
         }
-        return false;
     }
 }
