@@ -13,7 +13,7 @@ public class Main {
                 // "3p4/6b1/8/1P2Q3/2B5/6P1/2R1r3/3P4 w - - 0 1"
 //                "1k6/6p1/5p2/4N3/2n1B1b1/3P2P1/2P5/8 w - - 0 1"
 //                "k7/8/4n3/8/4K3/8/8/8 w - - 0 1"
-                "k7/8/1b6/2R5/4K3/8/8/8 w - - 0 1"
+                "k4r2/8/8/r7/4KN2/2q1N3/8/8 w - - 0 1"
         );
 
         // BoardConsoleRenderer renderer = new BoardConsoleRenderer();

@@ -41,7 +41,7 @@ abstract public class Piece {
         return getPieceMoves();
     }
 
-    private boolean isSquareAvailableForAttack(Coordinates coordinates, Board board) {
+    protected boolean isSquareAvailableForAttack(Coordinates coordinates, Board board) {
         return true;
     }
 
