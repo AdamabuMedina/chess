@@ -2,7 +2,10 @@ package main.java.com.adam;
 
 import main.java.com.adam.piece.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 
 public class Board {
     HashMap<Coordinates, Piece> pieces = new HashMap<>();
@@ -65,5 +68,31 @@ public class Board {
 
     public static boolean isSquareDark(Coordinates coordinates) {
         return (((coordinates.file.ordinal() + 1) + coordinates.rank) % 2) == 0;
+    }
+
+    private List<Piece> getPieceByColor(Color color) {
+        List<Piece> result = new ArrayList<>();
+
+        for (Piece piece : pieces.values()) {
+            if (piece.color == color) {
+                result.add(piece);
+            }
+        }
+
+        return result;
+    }
+
+    public boolean isSquareAttackedByColor(Coordinates coordinates, Color color) {
+        List<Piece> pieces = getPieceByColor(color);
+
+        for (Piece piece : pieces) {
+            Set<Coordinates> attackedSquares = piece.getAttackedSquares(this);
+
+            if (attackedSquares.contains(coordinates)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

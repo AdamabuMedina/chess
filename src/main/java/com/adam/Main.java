@@ -11,7 +11,9 @@ public class Main {
                 // "3k4/8/p7/8/R7/8/P7/3K4 w - - 0 1"
                 // "3k4/8/p5p1/5B2/R7/3P4/P7/3K4 w - - 0 1"
                 // "3p4/6b1/8/1P2Q3/2B5/6P1/2R1r3/3P4 w - - 0 1"
-                "1k6/6p1/5p2/4N3/2n1B1b1/3P2P1/2P5/8 w - - 0 1"
+//                "1k6/6p1/5p2/4N3/2n1B1b1/3P2P1/2P5/8 w - - 0 1"
+//                "k7/8/4n3/8/4K3/8/8/8 w - - 0 1"
+                "k7/8/1b6/2R5/4K3/8/8/8 w - - 0 1"
         );
 
         // BoardConsoleRenderer renderer = new BoardConsoleRenderer();
