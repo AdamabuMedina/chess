@@ -41,6 +41,21 @@ public class Pawn extends Piece {
     }
 
     @Override
+    protected Set<CoordinatesShift> getPieceAttacks() {
+        Set<CoordinatesShift> result = new HashSet<>();
+
+        if (color == Color.WHITE) {
+            result.add(new CoordinatesShift(-1, 1));
+            result.add(new CoordinatesShift(1, 1));
+        } else {
+            result.add(new CoordinatesShift(-1, -1));
+            result.add(new CoordinatesShift(1, -1));
+        }
+
+        return result;
+    }
+
+    @Override
     protected boolean isSquareAvailableForMove(Coordinates coordinates, Board board) {
         if (this.coordinates.file == coordinates.file) {
             return board.isSquareEmpty(coordinates);
