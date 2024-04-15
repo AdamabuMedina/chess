@@ -1,5 +1,8 @@
-package main.java.com.adam;
+package main.java.com.adam.board;
 
+import main.java.com.adam.Color;
+import main.java.com.adam.Coordinates;
+import main.java.com.adam.File;
 import main.java.com.adam.piece.*;
 
 import java.util.ArrayList;
@@ -8,7 +11,12 @@ import java.util.List;
 import java.util.Set;
 
 public class Board {
+    final String startingFen;
     HashMap<Coordinates, Piece> pieces = new HashMap<>();
+
+    public Board(String startingFen) {
+        this.startingFen = startingFen;
+    }
 
     public void setPiece(Coordinates coordinates, Piece piece) {
         piece.coordinates = coordinates;
@@ -19,10 +27,10 @@ public class Board {
         pieces.remove(coordinates);
     }
 
-    public void movePiece(Coordinates from, Coordinates to) {
-        Piece piece = getPiece(from);
-        removePiece(from);
-        setPiece(to, piece);
+    public void moveMove(Move move) {
+        Piece piece = getPiece(move.from);
+        removePiece(move.from);
+        setPiece(move.to, piece);
     }
 
     public boolean isSquareEmpty(Coordinates coordinates) {

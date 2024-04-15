@@ -1,11 +1,15 @@
-package main.java.com.adam;
+package main.java.com.adam.board;
+
+import main.java.com.adam.Coordinates;
+import main.java.com.adam.File;
+import main.java.com.adam.PieceFactory;
 
 public class BoardFactory {
     private final PieceFactory pieceFactory = new PieceFactory();
 
     public Board fromFEN(String fen) {
 
-        Board board = new Board();
+        Board board = new Board(fen);
 
         String[] parts = fen.split(" ");
         String piecePositions = parts[0];

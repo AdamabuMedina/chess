@@ -1,5 +1,7 @@
 package main.java.com.adam;
 
+import main.java.com.adam.board.Board;
+import main.java.com.adam.board.Move;
 import main.java.com.adam.piece.Piece;
 
 import java.util.Scanner;
@@ -88,11 +90,33 @@ public class InputCoordinates {
         }
     }
 
-    public static void main(String[] args) {
-        Board board = new Board();
-        board.setupDefaultPiecesPositions();
+    public static Move inputMove(Board board, Color color, BoardConsoleRenderer renderer) {
+        while (true) {
+            Coordinates sourceCoordinates = InputCoordinates.inputPieceCoordinatesForColor(
+                    color, board
+            );
 
-        Coordinates coordinates = inputPieceCoordinatesForColor(Color.WHITE, board);
-        System.out.println("coordinates = " + coordinates);
+            Piece piece = board.getPiece(sourceCoordinates);
+            Set<Coordinates> availableMoveSquare = piece.getAvailableMoveSquare(board);
+
+            renderer.render(board, piece);
+            Coordinates targetCoordinates = InputCoordinates.inputAvailableSquare(availableMoveSquare);
+
+            Move move = new Move(sourceCoordinates, targetCoordinates);
+            if (validateIfKingInCheckAfterMove(board, color, move)) {
+                System.out.println("Ваш король находится под атакой (под шахом)");
+                continue;
+            }
+
+            return move;
+        }
+
     }
+
+    private static boolean validateIfKingInCheckAfterMove(Board board, Color color, Move move) {
+//        Board copy = ...
+//        copy.move(move);
+        return false;
+    }
+
 }

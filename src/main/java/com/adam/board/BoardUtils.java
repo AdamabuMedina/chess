@@ -1,4 +1,7 @@
-package main.java.com.adam;
+package main.java.com.adam.board;
+
+import main.java.com.adam.Coordinates;
+import main.java.com.adam.File;
 
 import java.util.ArrayList;
 import java.util.List;

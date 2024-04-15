@@ -1,7 +1,7 @@
 package main.java.com.adam.piece;
 
-import main.java.com.adam.Board;
-import main.java.com.adam.BoardUtils;
+import main.java.com.adam.board.Board;
+import main.java.com.adam.board.BoardUtils;
 import main.java.com.adam.Color;
 import main.java.com.adam.Coordinates;
 

@@ -1,5 +1,6 @@
 package main.java.com.adam;
 
+import main.java.com.adam.board.Board;
 import main.java.com.adam.piece.Piece;
 
 import java.util.Set;

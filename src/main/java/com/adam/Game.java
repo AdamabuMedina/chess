@@ -1,8 +1,7 @@
 package main.java.com.adam;
 
-import main.java.com.adam.piece.Piece;
-
-import java.util.Set;
+import main.java.com.adam.board.Board;
+import main.java.com.adam.board.Move;
 
 public class Game {
 
@@ -26,19 +25,13 @@ public class Game {
                 System.out.println("Ходят черные!");
             }
 
-            Coordinates sourceCoordinates = InputCoordinates.inputPieceCoordinatesForColor(
-                    isWhiteToMove ? Color.WHITE : Color.BLACK, board
-            );
+            Move move = InputCoordinates.inputMove(board, isWhiteToMove ? Color.WHITE : Color.BLACK, renderer);
 
-            Piece piece = board.getPiece(sourceCoordinates);
-            Set<Coordinates> availableMoveSquare = piece.getAvailableMoveSquare(board);
-
-            renderer.render(board, piece);
-            Coordinates targetCoordinates = InputCoordinates.inputAvailableSquare(availableMoveSquare);
-
-            board.movePiece(sourceCoordinates, targetCoordinates);
+            board.moveMove(move);
 
             isWhiteToMove = !isWhiteToMove;
         }
     }
+
+
 }
