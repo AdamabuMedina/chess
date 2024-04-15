@@ -11,8 +11,10 @@ import java.util.List;
 import java.util.Set;
 
 public class Board {
-    final String startingFen;
-    HashMap<Coordinates, Piece> pieces = new HashMap<>();
+    public final String startingFen;
+    public HashMap<Coordinates, Piece> pieces = new HashMap<>();
+
+    public List<Move> moves = new ArrayList<>();
 
     public Board(String startingFen) {
         this.startingFen = startingFen;
@@ -27,10 +29,13 @@ public class Board {
         pieces.remove(coordinates);
     }
 
-    public void moveMove(Move move) {
+    public void makeMove(Move move) {
         Piece piece = getPiece(move.from);
+
         removePiece(move.from);
         setPiece(move.to, piece);
+
+        moves.add(move);
     }
 
     public boolean isSquareEmpty(Coordinates coordinates) {
@@ -78,7 +83,7 @@ public class Board {
         return (((coordinates.file.ordinal() + 1) + coordinates.rank) % 2) == 0;
     }
 
-    private List<Piece> getPieceByColor(Color color) {
+    public List<Piece> getPieceByColor(Color color) {
         List<Piece> result = new ArrayList<>();
 
         for (Piece piece : pieces.values()) {

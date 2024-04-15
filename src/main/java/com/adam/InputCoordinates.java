@@ -1,7 +1,9 @@
 package main.java.com.adam;
 
 import main.java.com.adam.board.Board;
+import main.java.com.adam.board.BoardFactory;
 import main.java.com.adam.board.Move;
+import main.java.com.adam.piece.King;
 import main.java.com.adam.piece.Piece;
 
 import java.util.Scanner;
@@ -114,9 +116,12 @@ public class InputCoordinates {
     }
 
     private static boolean validateIfKingInCheckAfterMove(Board board, Color color, Move move) {
-//        Board copy = ...
-//        copy.move(move);
-        return false;
+        Board copy = (new BoardFactory()).copy(board);
+        copy.makeMove(move);
+
+        // допущение король есть у доски
+        Piece king = copy.getPieceByColor(color).stream().filter(piece -> piece instanceof King).findFirst().get();
+        return copy.isSquareAttackedByColor(king.coordinates, color.opposite());
     }
 
 }
