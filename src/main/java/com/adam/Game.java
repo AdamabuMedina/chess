@@ -3,14 +3,13 @@ package main.java.com.adam;
 import main.java.com.adam.board.Board;
 import main.java.com.adam.board.Move;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Game {
 
     private final Board board;
     private final BoardConsoleRenderer renderer = new BoardConsoleRenderer();
-    private final List<GameStateChecker> checkers = Collections.emptyList();
+    private final List<GameStateChecker> checkers = List.of(new StaleMateGameStateChecker());
 
     public Game(Board board) {
         this.board = board;

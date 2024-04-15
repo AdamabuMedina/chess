@@ -1,10 +1,12 @@
 package main.java.com.adam.piece;
 
-import main.java.com.adam.board.Board;
 import main.java.com.adam.Color;
 import main.java.com.adam.Coordinates;
+import main.java.com.adam.board.Board;
+import main.java.com.adam.board.BoardUtils;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Pawn extends Piece {
@@ -58,7 +60,14 @@ public class Pawn extends Piece {
     @Override
     protected boolean isSquareAvailableForMove(Coordinates coordinates, Board board) {
         if (this.coordinates.file == coordinates.file) {
-            return board.isSquareEmpty(coordinates);
+            int rankShift = Math.abs(this.coordinates.rank - coordinates.rank);
+
+            if (rankShift == 2) {
+                List<Coordinates> between = BoardUtils.getVerticalCoordinatesBetween(this.coordinates, coordinates);
+                return board.isSquareEmpty(between.get(0));
+            } else {
+                return board.isSquareEmpty(coordinates);
+            }
         } else {
             if (board.isSquareEmpty(coordinates)) {
                 return false;

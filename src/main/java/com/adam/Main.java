@@ -20,6 +20,7 @@ public class Main {
 //                "k7/8/4p3/8/4K3/8/8/8 w - - 0 1"
 //                "3k4/8/8/b7/8/8/2PK4/6N1 w - - 0 1"
                 "8/8/8/8/6p1/3k1pP1/3p1P2/3K3N w - - 0 1"
+//                "8/8/8/8/6p1/3k1pP1/3pPP2/3K3N w - - 0 1"
         );
 
         // BoardConsoleRenderer renderer = new BoardConsoleRenderer();
