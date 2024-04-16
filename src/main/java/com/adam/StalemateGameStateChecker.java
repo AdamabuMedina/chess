@@ -6,7 +6,7 @@ import main.java.com.adam.piece.Piece;
 import java.util.List;
 import java.util.Set;
 
-public class StaleMateGameStateChecker extends GameStateChecker {
+public class StalemateGameStateChecker extends GameStateChecker {
 
     @Override
     public GameState check(Board board, Color color) {

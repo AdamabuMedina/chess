@@ -64,7 +64,7 @@ public class Pawn extends Piece {
 
             if (rankShift == 2) {
                 List<Coordinates> between = BoardUtils.getVerticalCoordinatesBetween(this.coordinates, coordinates);
-                return board.isSquareEmpty(between.get(0));
+                return (board.isSquareEmpty(between.get(0))) && (board.isSquareEmpty(coordinates));
             } else {
                 return board.isSquareEmpty(coordinates);
             }
